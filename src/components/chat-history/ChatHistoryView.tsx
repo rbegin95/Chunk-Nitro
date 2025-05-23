@@ -6,7 +6,7 @@ import { useChatHistory } from '../../hooks';
 
 export const ChatHistoryView: FC<{}> = props =>
 {
-    const [ isVisible, setIsVisible ] = useState(false); // always visible in sidebar mode
+    const [ isVisible, setIsVisible ] = useState(false);
     const [ searchText, setSearchText ] = useState<string>('');
     const { chatHistory = [] } = useChatHistory();
     const elementRef = useRef<HTMLDivElement>(null);
@@ -92,12 +92,15 @@ export const ChatHistoryView: FC<{}> = props =>
                                             </div>
                                         </div>
                                     </div>}
-                                {row.type === ChatEntryType.TYPE_ROOM_INFO &&
-                                    <>
-                                        <i className="icon icon-small-room" />
-                                        <Text textBreak wrap grow>{row.name}</Text>
-                                    </>
-                                }
+                                    {row.type === ChatEntryType.TYPE_ROOM_INFO &&
+    <>
+        <i className="icon icon-small-room" />
+        <div className="flex-grow-1 d-inline text-black text-wrap text-break">
+            <span className="text-white">{row.name}</span>
+        </div>
+    </>
+}
+
                             </Flex>
                         );
                     }} />
