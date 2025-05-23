@@ -15,15 +15,15 @@ const useUserChooserWidgetState = () =>
         item && GetRoomEngine().selectRoomObject(GetRoomSession().roomId, item.id, item.category);
 
     const resolveType = (userType: number): string =>
+    {
+        switch(userType)
         {
-            switch(userType)
-            {
-                case 1: return 'Habbo'; // Normal user
-                case 2: return 'Pet';
-                case 3: return 'Bot';
-                default: return '-';
-            }
-        }        
+            case 1: return 'Habbo'; // Normal user
+            case 2: return 'Pet';
+            case 4: return 'Bot';
+            default: return '-';
+        }
+    }
 
     const populateChooser = () =>
     {
@@ -37,6 +37,8 @@ const useUserChooserWidgetState = () =>
 
                 const userData = roomSession.userDataManager.getUserDataByIndex(roomObject.id);
                 if(!userData) return null;
+
+                console.log(`[DEBUG] ${userData.name} -> type: ${userData.type}`);
 
                 const type = resolveType(userData.type);
                 return new RoomObjectItem(userData.roomIndex, RoomObjectCategory.UNIT, userData.name, 0, '-', type);
