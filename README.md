@@ -25,11 +25,6 @@
         -   Update `camera.url, thumbnails.url, url.prefix, habbopages.url`
     -   You can override any variable by passing it to `NitroConfig` in the index.html
 
-## Usage
-
--   To use Nitro you need `.nitro` assets generated, see [nitro-converter](https://git.krews.org/nitro/nitro-converter) for instructions
--   See [Morningstar Websockets](https://git.krews.org/nitro/ms-websockets) for instructions on configuring websockets on your server
-
 ### Development
 
 Run Nitro in development mode when you are editing the files, this way you can see the changes in your browser instantly
